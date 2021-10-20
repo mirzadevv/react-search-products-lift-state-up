@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./inputForm.module.css";
 
-const InputForm = () => {
+const InputForm = ({ onChange }) => {
   const [productValue, setProductValue] = useState("");
   const handleChange = (e) => {
     setProductValue(e.currentTarget.value.toLowerCase());
   };
+
+  useEffect(() => {
+    onChange(productValue);
+  }, [productValue]);
 
   return (
     <div className={styles.container}>
