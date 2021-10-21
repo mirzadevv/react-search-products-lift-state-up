@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import Products from "./components/products";
 import InputForm from "./components/inputForm";
+import { getProducts } from "./data/products";
 import "./App.css";
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
   return (
     <div className="app">
       <InputForm onChange={handleChange} />
+      <Products productValue={productValue} products={getProducts()} />
     </div>
   );
 }
