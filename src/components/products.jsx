@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./products.module.css";
-const Products = ({ products }) => {
+const Products = ({ products, productValue }) => {
+  const { current: cloneProducts } = useRef(products);
   return (
     <>
       <div className={styles.container}>
