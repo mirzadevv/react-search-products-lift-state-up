@@ -1,8 +1,23 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "./products.module.css";
 const Products = ({ products, productValue }) => {
   const { current: cloneProducts } = useRef(products);
   const [searchedProducts, setSearchedProducts] = useState([]);
+  useEffect(() => {
+    let foundProducts = products.filter((product) => {
+      if (productValue !== "") {
+        if (product.name.toLowerCase().includes(productValue)) {
+          return product;
+        }
+      }
+    });
+
+    if (foundProducts.length !== 0) {
+      setSearchedProducts(foundProducts);
+    } else {
+      setSearchedProducts(cloneProducts);
+    }
+  }, [productValue]);
   return (
     <>
       <div className={styles.container}>
@@ -11,7 +26,7 @@ const Products = ({ products, productValue }) => {
           <h5>name</h5>
           <h5>price</h5>
         </div>
-        {products.map((product) => (
+        {searchedProducts.map((product) => (
           <div className={styles.data} key={product.id}>
             <p>{product.id}</p>
             <p>{product.name}</p>
