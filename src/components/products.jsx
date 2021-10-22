@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./products.module.css";
 const Products = ({ products, productValue }) => {
   const { current: cloneProducts } = useRef(products);
