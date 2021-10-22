@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./products.module.css";
 const Products = ({ products, productValue }) => {
   const { current: cloneProducts } = useRef(products);
+  const [searchedProducts, setSearchedProducts] = useState([]);
   return (
     <>
       <div className={styles.container}>
