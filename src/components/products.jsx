@@ -20,20 +20,24 @@ const Products = ({ products, productValue }) => {
   }, [productValue]);
   return (
     <>
-      <div className={styles.container}>
-        <div className={`${styles.data} ${styles.columns}`}>
-          <h5>id</h5>
-          <h5>name</h5>
-          <h5>price</h5>
-        </div>
-        {searchedProducts.map((product) => (
-          <div className={styles.data} key={product.id}>
-            <p>{product.id}</p>
-            <p>{product.name}</p>
-            <p>{product.price}</p>
+      {searchedProducts.length ? (
+        <div className={styles.container}>
+          <div className={`${styles.data} ${styles.columns}`}>
+            <h5>id</h5>
+            <h5>name</h5>
+            <h5>price</h5>
           </div>
-        ))}
-      </div>
+          {searchedProducts.map((product) => (
+            <div className={styles.data} key={product.id}>
+              <p>{product.id}</p>
+              <p>{product.name}</p>
+              <p>{product.price}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <h5> There are no products</h5>
+      )}
     </>
   );
 };
